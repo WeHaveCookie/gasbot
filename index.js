@@ -4,15 +4,8 @@ require('dotenv').config();
 const Discord = require('discord.js'); // https://discord.js.org/
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-const commandFiles = fs
-  .readdirSync('./commands')
-  .filter((file) => file.endsWith('.js'));
 
 const prefix = '!';
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  client.commands.set(command.name, command);
-}
 
 
 const axios = require('axios').default;
@@ -116,13 +109,13 @@ var gasAlertSystem = schedule.scheduleJob(ALERT_FREQUENCY, function(){
 		alertTrigger = true;
 		time = 0;
 		console.log("Threeshold trigger");
-		channel.send("<@&807255661683015741>\n");
+		channel.send("<@&807303204743282729>\n");
 		sentGasMessage();
 		channel.send("Alert disable for 5min\n");
 	  } else if (alertTrigger && (currentStandardGasNow > alertThreeshold || currentStandardEtherScan > alertThreeshold))
 	  {
 	    console.log("Threeshold trigger");
-		channel.send("<@&807255661683015741> Gas fee above Threeshold\n");
+		channel.send("<@&807303204743282729> Gas fee above Threeshold\n");
 		sentGasMessage();
 	  }
 	  });  
